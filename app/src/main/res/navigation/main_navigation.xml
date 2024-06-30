@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/itemListNews">
+
+    <fragment
+        android:id="@+id/itemListNews"
+        android:name="com.example.hobbyapp.view.NewsListFragment"
+        android:label="Hobbies"
+        tools:layout="@layout/fragment_news_list">
+        <action
+            android:id="@+id/actionNewsDetail"
+            app:destination="@id/newsDetailFragment" />
+        <action
+            android:id="@+id/actionLoginFromNewsList"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.example.hobbyapp.view.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/actionLogout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.hobbyapp.view.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/actionNewsListFromLogin"
+            app:destination="@id/itemListNews"
+            app:popUpTo="@id/itemListNews"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/actionRegister"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.hobbyapp.view.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/actionLoginFromRegister"
+            app:destination="@id/loginFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.hobbyapp.view.NewsDetailFragment"
+        android:label="News Detail"
+        tools:layout="@layout/fragment_news_detail">
+        <action
+            android:id="@+id/actionNewsListFromDetail"
+            app:destination="@id/itemListNews" />
+        <argument
+            android:name="newsid"
+            app:argType="integer" />
+    </fragment>
+</navigation>

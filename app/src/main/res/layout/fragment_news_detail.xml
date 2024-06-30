@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    Implementasi Attribute dan Interface Binding-->
+    <data>
+        <variable
+            name="news"
+            type="com.example.hobbyapp.model.News" />
+        <variable
+            name="clickHandler"
+            type="com.example.hobbyapp.global.NewsClickHandler" />
+    </data>
+
+    <FrameLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:pointerIcon="arrow"
+        tools:context=".view.NewsDetailFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imageViewNewsCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <ProgressBar
+                    android:id="@+id/progressImageCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewNewsCard"
+                    app:layout_constraintLeft_toLeftOf="@+id/imageViewNewsCard"
+                    app:layout_constraintRight_toRightOf="@+id/imageViewNewsCard"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewNewsCard" />
+
+                <TextView
+                    android:id="@+id/textTitleCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@={news.title}"
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewNewsCard" />
+
+                <TextView
+                    android:id="@+id/textAuthorCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@={news.author}"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textTitleCard" />
+
+                <TextView
+                    android:id="@+id/textContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:minHeight="200dp"
+                    android:textSize="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textAuthorCard" />
+
+                <TextView
+                    android:id="@+id/textPage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="1/3"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textContent" />
+
+
+                <Button
+                    android:id="@+id/buttonNext"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:hapticFeedbackEnabled="true"
+                    android:paddingLeft="20dp"
+                    android:paddingEnd="20dp"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/baseline_arrow_forward_24"
+                    app:iconSize="22dp"
+                    android:onClick="@{(v) -> clickHandler.onNewsClick(v)}"
+                    app:layout_constraintBottom_toBottomOf="@+id/textPage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textPage"
+                    app:layout_constraintTop_toTopOf="@+id/textPage" />
+
+                <Button
+                    android:id="@+id/buttonPrev"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:hapticFeedbackEnabled="true"
+                    android:paddingLeft="20dp"
+                    android:paddingEnd="20dp"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/baseline_arrow_back_24"
+                    app:iconSize="22dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textPage"
+                    app:layout_constraintEnd_toStartOf="@+id/textPage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textPage" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </FrameLayout>
+</layout>
